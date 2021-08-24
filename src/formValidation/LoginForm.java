@@ -2,6 +2,7 @@ package formValidation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -73,12 +74,12 @@ public class LoginForm {
                     System.out.println("Date of birth can't be null ! Please enter valid date");
                     continue;
                 } else {
-                    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
                     try {
-                        Date birthdate = formatter.parse(dob);
+                         formatter.parse(dob);
                         break;
-                    } catch (ParseException e) {
-                        System.out.println("Please enter valid date in format of MM/DD/YYYY");
+                    } catch (Exception e) {
+                        System.out.println("Please enter valid date in format of MM-DD-YYYY");
                     }
 
 
